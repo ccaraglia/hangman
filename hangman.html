@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HANGMAN </title>
+</head>
+
+<body>
+    <h1>Hangman (to become fancier)</h1>
+
+    <script>
+    //array of words as given
+    var words=["the","of","and","a","to","in","is","you","that","it","he",
+  "was","for","on","are","as","with","his","they","I","at","be",
+  "this","have","from","or","one","had","by","word","but","not",
+  "what","all","were","we","when","your","can","said","there",
+  "use","an","each","which","she","do","how","their","if","will",
+  "up","other","about","out","many","then","them","these","so",
+  "some","her","would","make","like","him","into","time","has",
+  "look","two","more","write","go","see","number","no","way",
+  "could","people","my","than","first","water","been","call",
+  "who","oil","its","now","find","long","down","day","did","get",
+  "come","made","may","part"];
+
+  //Selecting a random word (random number between 0 and words.length)
+
+  var word=words[Math.floor(Math.random()*words.length)];
+
+  //Creating the answer line
+
+var answerArray = [];
+for (var i=0; i<word.length; i++){
+    answerArray[i]="_";
+}
+
+var remainingLetters=word.length;
+
+//the real game starts here
+
+while (remainingLetters>0){
+    alert(answerArray.join(" "));
+
+    //primitive prompt
+    var guess=prompt("Guess a letter or cancel to give up");
+    if (guess===null){
+        //leave the game
+        break;
+        }
+        else if (guess.length !==1){
+            alert("Only one letter at a time");
+
+        }
+        else{
+            for (var j=0;j<word.length;j++) {
+                if (word[j]===guess){
+                    answerArray[j]=guess;
+                    remainingLetters--;
+                }
+            }
+        }
+}
+alert(answerArray.join(" "));
+alert("Good! You guessed!");
+</script>
+</body>
+</html>
+
